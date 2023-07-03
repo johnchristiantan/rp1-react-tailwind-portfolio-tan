@@ -1,10 +1,19 @@
+import About from "./components/About"
+import Contacts from "./components/Contacts"
+import Experiences from "./components/Experiences"
+import Home from "./components/Home"
+import Projects from "./components/Projects"
+import Skills from "./components/Skills"
 
 function App() {
   return (
     <>
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+      <Home />
+      <About/>
+      <Skills/>
+      <Experiences/>
+      <Projects/>
+      <Contacts/>
     </>
   )
 }
