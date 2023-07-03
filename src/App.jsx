@@ -1,3 +1,4 @@
+import Nav from "./common/Nav"
 import About from "./components/About"
 import Contacts from "./components/Contacts"
 import Experiences from "./components/Experiences"
@@ -8,6 +9,7 @@ import Skills from "./components/Skills"
 function App() {
   return (
     <>
+      <Nav/>
       <Home />
       <About/>
       <Skills/>
