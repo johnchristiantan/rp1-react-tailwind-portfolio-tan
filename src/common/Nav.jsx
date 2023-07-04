@@ -1,11 +1,11 @@
 import React, {useState} from 'react'
-
+import { Link } from 'react-router-dom'
 // import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 
 const Nav = () => {
     const pages = [
         {
-          name: 'Home', link: '/home'
+          name: 'Home', link: '/'
         },
         {
           name: 'About', link: '/about'
@@ -23,27 +23,30 @@ const Nav = () => {
           name: 'Contacts', link: '/contacts'
         },
     ]
-    const [open, setOpen]= useState(false)
+    const [open, setOpen]= useState(true)
   return (
-    <nav className='fixed w-full pb-20 pl-4 text-white bg-yellow-800'>
+    <nav className='fixed w-full pb-12 pl-4 text-white bg-yellow-800 shadow-lg md:p-0 md-flex md:h-16'>
         
         {/* <EmojiEmotionsIcon/> JC */}
-        <span className='absolute top-3 left-4'>JC 😁</span>
-        <ul className='mt-14'>
+        <span className='absolute top-4 left-4'>JC 😁</span>
+        <ul className={`mt-14 md:mt-0 justify-around md:mx-24 md:h-16 ${open && 'hidden' } md:flex`}> 
+        {/* md-flex  is the flex direction | align horizontally*/}
+        {/* // => @media (min-width: 768px) { ... } */}
             {pages.map(page => {
                 return (
-                    <li className='py-2' key={page.name}><a href={page.link}>{page.name}</a></li>
+                    <li className='py-2 md:mt-3' key={page.name}><Link to={page.link} onClick={() => setOpen(!open)}>{page.name}</Link></li>
                 )
             })
             }
-            <button className='p-1 mt-2 bg-red-600 rounded-md' >Contact Me</button>
+            <button className='p-1 mt-2 bg-red-600 rounded-md md:h-10 md:mt-3' >Contact Me</button>
         </ul>
-        {open? 
-        <button onClick={()=> setOpen(!open)}>
-            <span className='absolute text-2xl right-4 top-1'>🍔</span></button>: 
-            <button onClick={()=> setOpen(!open)}><span className='absolute text-2xl right-4 top-1'>🍟</span> </button>
-        }
+        <button  onClick={()=> setOpen(!open)}>
+          {open?<span className='absolute text-2xl md:hidden right-4 top-4'>🍔</span>:
+            <span className='absolute text-2xl md:hidden right-4 top-4'>🍟</span>
+           }
+           </button>
     </nav>
+    
   )
 }
 
